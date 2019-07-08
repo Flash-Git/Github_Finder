@@ -17,7 +17,7 @@ class Users extends Component {
         html_url: "https://github.com/mojombo"
       }
     ]
-  }
+  };
 
   render(){
     return(
@@ -27,13 +27,13 @@ class Users extends Component {
         )) }
       </div>
     )
-  }
+  };
 }
 
 const userStyle = {
   display: "grid",
   gridTemplateColumns: "repeat(3, 1fr)",
   gridGap: "1rem"
-}
+};
 
-export default Users
+export default Users;
