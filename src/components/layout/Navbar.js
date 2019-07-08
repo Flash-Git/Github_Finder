@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export class Navbar extends Component {
+class Navbar extends Component {
   static defaultProps = {
     title: "Github Finder",
     icon: ["fab", "github"]
