@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import './App.css';
 
@@ -10,6 +11,7 @@ import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
+import About from './components/pages/About';
 
 library.add(faGithub);
 library.add(faInfoCircle);
@@ -51,14 +53,32 @@ class App extends Component {
     const { loading, users, alert } = this.state;
 
     return(
-      <div className="App">
-        <Navbar />
-        <div className="container">
-          <Alert alert={ alert } />
-          <Search showClear={ users.length > 0 ? true : false } searchUsers={ this.searchUsers } clearUsers={ this.clearUsers } setAlert={ this.setAlert } />
-          <Users loading={ loading } users={ users } />
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="container">
+            <Alert alert={ alert } />
+            <Switch>
+              <Route exact path="/" render={
+                props => (
+                  <Fragment>
+                    <Search showClear={ users.length > 0 ? true : false }
+                      searchUsers={ this.searchUsers }
+                      clearUsers={ this.clearUsers }
+                      setAlert={ this.setAlert }
+                    />
+                    <Users loading={ loading }
+                      users={ users }
+                    />
+                  </Fragment>
+                )
+              } />
+              <Route exact path="/about" component={ About } />
+            </Switch>
+
+          </div>
         </div>
-      </div>
+      </Router>
     );
   };
 }
