@@ -4,17 +4,21 @@ import './App.css';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
+import Alert from './components/layout/Alert';
 
 library.add(faGithub);
+library.add(faInfoCircle);
 
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
 
   async componentDidMount() {
@@ -35,16 +39,23 @@ class App extends Component {
       this.setState({users: res.data.items, loading: false });
   };
 
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg, type } });
+
+    setTimeout(() => this.setState({ alert: null }), 5000);
+  }
+
   clearUsers = () => this.setState({ users: [], loading: false });
 
   render(){
-    const { loading, users } = this.state;
+    const { loading, users, alert } = this.state;
 
     return(
       <div className="App">
         <Navbar />
         <div className="container">
-          <Search showClear={ users.length > 0 ? true : false } searchUsers={ this.searchUsers } clearUsers={ this.clearUsers } />
+          <Alert alert={ alert } />
+          <Search showClear={ users.length > 0 ? true : false } searchUsers={ this.searchUsers } clearUsers={ this.clearUsers } setAlert={ this.setAlert } />
           <Users loading={ loading } users={ users } />
         </div>
       </div>
