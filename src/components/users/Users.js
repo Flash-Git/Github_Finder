@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import UserItem from "./UserItem";
 import Spinner from "../layout/Spinner";
 
 const Users = ({ loading, users }) => {
   if(loading){
-    return <Spinner />
+    return <Spinner />;
   }else{
     return(
-      <div style={userStyle}>
+      <div style={ userStyle }>
         { users.map(user => (
-          <UserItem key={user.id} user={user} />
+          <UserItem key={ user.id } user={ user } />
         )) }
       </div>
     );

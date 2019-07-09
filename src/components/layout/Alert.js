@@ -8,7 +8,7 @@ const Alert = ({ alert }) => {
         <FontAwesomeIcon icon={ ["fa", "info-circle"] } /> { alert.msg }
       </div>
     )
-  )
+  );
 }
 
 export default Alert;
