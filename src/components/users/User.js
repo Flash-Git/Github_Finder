@@ -48,7 +48,7 @@ class User extends Component {
               <h3>Bio</h3>
               <p>{ bio }</p>
             </Fragment> }
-            <a href="html_url" className="btn btn-dark my-1" >Visit Github Profile</a>
+            <a href={ html_url } className="btn btn-dark my-1" >Visit Github Profile</a>
             <ul>
             <li>
                 { login && <Fragment>
