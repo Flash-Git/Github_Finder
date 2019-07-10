@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
+
 import GithubContext from "./githubContext";
 import GithuhReducer from "./githubReducer";
 import {
@@ -18,6 +19,9 @@ const GithubState = props => {
 
   //Methods
 
+  const setLoading = () =>
+    dispatch({ type: SET_LOADING });
+
   const searchUsers = text => {
     setLoading();
 
@@ -31,7 +35,23 @@ const GithubState = props => {
       });
   };
 
-  const setLoading = () => dispatch({ type: SET_LOADING });
+
+  const getUser = username => {
+    setLoading();
+
+    axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+      &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+      .then(res => {
+        dispatch({
+          type: GET_USER,
+          payload: res.data
+        });
+      });
+  };
+
+
+  const clearUsers = () => dispatch({ type: CLEAR_USERS });
+
 
 
 
@@ -41,7 +61,9 @@ const GithubState = props => {
       user: state.user,
       repos: state.repos,
       loading: state.loading,
-      searchUsers
+      searchUsers,
+      clearUsers,
+      getUser
     }}
   >
     { props.children }

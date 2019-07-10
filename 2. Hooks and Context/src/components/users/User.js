@@ -1,12 +1,17 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from "prop-types";
 
 import Spinner from "../layout/Spinner";
 import Repos from "../repos/Repos";
+import GithubContext from '../../context/github/githubContext';
 
-const User = ( { match, loading, user, repos, getUser, getUserRepos } ) => {
+const User = ( { match, repos, getUserRepos } ) => {
+  const githubContext = useContext(GithubContext);
+
+  const { getUser, loading, user } = githubContext;
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepos(match.params.login);
@@ -23,11 +28,11 @@ const User = ( { match, loading, user, repos, getUser, getUserRepos } ) => {
         Back to Search
       </Link>
       Hireable: { " " }
-      { hireable ? (
+      { hireable ?
         <FontAwesomeIcon icon={ ["fa", "check-circle"] } className="text-success" />
-      ) : (
+      :
         <FontAwesomeIcon icon={ ["fa", "times-circle"] } className="text-danger" />
-      )}
+      }
       <div className="card grid-2">
         <div className="all-center">
           <img src={ avatar_url } className="round-img" alt="avatar" style={{ width: "150px" }} />
@@ -41,7 +46,7 @@ const User = ( { match, loading, user, repos, getUser, getUserRepos } ) => {
           </Fragment> }
           <a href={ html_url } className="btn btn-dark my-1" >Visit Github Profile</a>
           <ul>
-          <li>
+            <li>
               { login && <Fragment>
                 <strong>Username: </strong> { login }
               </Fragment> }
@@ -79,10 +84,7 @@ const User = ( { match, loading, user, repos, getUser, getUserRepos } ) => {
 };
 
 User.propTypes = {
-  loading: PropTypes.bool,
-  user: PropTypes.object.isRequired,
   repos: PropTypes.array.isRequired,
-  getUser: PropTypes.func.isRequired,
   getUserRepos: PropTypes.func.isRequired
 }
 
