@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -6,10 +6,9 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faInfoCircle, faCheckCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 import Navbar from './components/layout/Navbar';
-import Users from './components/users/Users';
 import User from './components/users/User';
-import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
+import Home from "./components/pages/Home";
 import About from './components/pages/About';
 import GithubState from "./context/github/GithubState";
 import AlertState from "./context/alert/AlertState";
@@ -39,14 +38,7 @@ const App = () => {
         <div className="container">
           <Alert />
           <Switch>
-            <Route exact path="/" render={
-              props => (
-                <Fragment>
-                  <Search />
-                  <Users />
-                </Fragment>
-              )
-            } />
+            <Route exact path="/" component={ Home } />
             <Route exact path="/about" component={ About } />
             <Route exact path="/user/:login" component={ User } />
           </Switch>
