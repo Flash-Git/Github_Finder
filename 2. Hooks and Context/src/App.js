@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -18,21 +18,8 @@ import './App.css';
 
 library.add(faGithub, faInfoCircle, faCheckCircle, faTimesCircle);
 
-const App = () => {
-  // useEffect(() => {
-  //   setLoading(true);
-
-  //   axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-  //     &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
-  //     .then(res => {
-  //       setUsers(res.data);
-  //       setLoading(false);
-  //     });
-
-  //   //eslint-disable-next-line
-  // }, []);
-
-  return <GithubState> <AlertState>
+const App = () => (
+  <GithubState> <AlertState>
     <Router>
       <div className="App">
         <Navbar />
@@ -47,7 +34,7 @@ const App = () => {
         </div>
       </div>
     </Router>
-  </AlertState> </GithubState>;
-};
+  </AlertState> </GithubState>
+);
 
 export default App;
