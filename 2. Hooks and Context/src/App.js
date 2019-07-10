@@ -16,7 +16,7 @@ import About from './components/pages/About';
 
 library.add(faGithub, faInfoCircle, faCheckCircle, faTimesCircle);
 
-const App= () => {
+const App = () => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
