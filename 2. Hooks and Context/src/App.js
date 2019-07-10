@@ -38,17 +38,6 @@ const App = () => {
     //eslint-disable-next-line
   }, []);
 
-  const searchUsers = text => {
-    setLoading(true);
-
-    axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-      &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
-      .then(res => {
-        setUsers(res.data.items);
-        setLoading(false);
-      });
-  };
-
   const getUser = username => {
     setLoading(true);
 
@@ -92,7 +81,6 @@ const App = () => {
               props => (
                 <Fragment>
                   <Search showClear={ users.length > 0 ? true : false }
-                    searchUsers={ searchUsers }
                     clearUsers={ clearUsers }
                     setAlert={ showAlert }
                   />
