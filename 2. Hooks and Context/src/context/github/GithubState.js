@@ -34,7 +34,7 @@ const GithubState = props => {
         });
       });
   };
-  
+
   const searchUsers = text => {
     setLoading();
 

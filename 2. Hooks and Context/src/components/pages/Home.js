@@ -1,6 +1,6 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import Search from '../users/Search';
-import Users from '../users/Users';
+import React, { Fragment, useContext, useEffect } from "react";
+import Search from "../users/Search";
+import Users from "../users/Users";
 
 import GithubContext from "../../context/github/githubContext";
 
@@ -12,10 +12,12 @@ const Home = () => {
     //eslint-disable-next-line
   }, []);
 
-  return <Fragment>
-    <Search />
-    <Users />
-  </Fragment>;
+  return (
+    <Fragment>
+      <Search />
+      <Users />
+    </Fragment>
+  );
 };
 
 export default Home;
