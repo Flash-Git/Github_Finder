@@ -9,15 +9,12 @@ const Users = () => {
 
   const {loading, users } = githubContext;
 
-  if(loading){
-    return <Spinner />;
-  }else{
-    return <div style={ userStyle }>
-      { users.map(user => (
-        <UserItem key={ user.id } user={ user } />
-      )) }
-    </div>;
-  }
+  if(loading) return <Spinner />;
+  else return <div style={ userStyle }>
+    { users.map(user => (
+      <UserItem key={ user.id } user={ user } />
+    )) }
+  </div>;
 };
 
 const userStyle = {

@@ -33,7 +33,7 @@ const GithubState = props => {
           payload: res.data
         });
       });
-  }
+  };
   
   const searchUsers = text => {
     setLoading();

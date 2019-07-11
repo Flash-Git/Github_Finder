@@ -18,8 +18,7 @@ import './App.css';
 
 library.add(faGithub, faInfoCircle, faCheckCircle, faTimesCircle);
 
-const App = () => (
-  <GithubState> <AlertState>
+const App = () => <GithubState> <AlertState>
     <Router>
       <div className="App">
         <Navbar />
@@ -34,7 +33,6 @@ const App = () => (
         </div>
       </div>
     </Router>
-  </AlertState> </GithubState>
-);
+  </AlertState> </GithubState>;
 
 export default App;

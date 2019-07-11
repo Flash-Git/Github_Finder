@@ -3,7 +3,7 @@ import {
 } from "../types";
 
 export default (state, action) => {
-  switch(action.type) {
+  switch(action.type){
     case SET_LOADING:
       return {
         ...state,
@@ -36,4 +36,4 @@ export default (state, action) => {
     default:
       return state;
   }
-}
+};
