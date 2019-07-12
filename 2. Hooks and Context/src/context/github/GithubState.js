@@ -12,7 +12,7 @@ import {
 } from "../types";
 
 let githubClientId;
-let githubCliendSecret;
+let githubClientSecret;
 
 if (process.env.NODE_ENC !== "production") {
   githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
